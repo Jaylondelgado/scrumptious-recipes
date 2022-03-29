@@ -1,5 +1,5 @@
 from django.shortcuts import redirect
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from tasks.models import Task
 
@@ -11,9 +11,10 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
     template_name = "tasks/tasks_create.html"
     fields = ["name", "start_date", "due_date", "project", "assignee"]
 
-    # def form_valid(self, form):
-    #     item = form.save(commit=False)
-    #     item.assignee = self.request.user
-    #     item.save()
-    #     form.save_m2m()
-    #     return redirect("show_project", pk=item.id)
+
+class TaskListView(LoginRequiredMixin, ListView):
+    model = Task
+    template_name = "tasks/tasks_list.html"
+
+    def get_queryset(self):
+        return Task.objects.filter(assignee=self.request.user)
