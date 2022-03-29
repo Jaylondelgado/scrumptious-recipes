@@ -1,6 +1,6 @@
-from tkinter import CASCADE
 from django.db import models
-from projects.models import Project
+
+# from projects.models import Project
 from django.conf import settings
 
 
@@ -15,7 +15,7 @@ class Task(models.Model):
     due_date = models.DateTimeField(null=False)
     is_completed = models.BooleanField(default=False)
     project = models.ForeignKey(
-        Project,
+        "projects.Project",
         related_name="tasks",
         on_delete=models.CASCADE,
     )

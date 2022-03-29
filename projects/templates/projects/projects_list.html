@@ -4,9 +4,9 @@
     <main>
         <div>
             <h1>My Projects</h1>
-            {% if Project is None %}
+            {% if project_list is None %}
                 <p>You are not assigned to any projects</p>
-                {% endif %}
+                {% else %}
                 <table>
                     <thead>
                         <tr>
@@ -17,12 +17,13 @@
                     <tbody>
                         {% for project in project_list %}
                         <tr>
-                            <td>{{ project.name }}</td>
-                            <td></td>
+                            <td><a href="{% url 'show_project' project.pk %}">{{ project.name }}</a></td>
+                            <td>{{ tasks|length }}</td>
                         </tr>
                         {% endfor %}
                     </tbody>
                 </table>
+            {% endif %}
         </div>
     </main> 
 {% endblock content %}
