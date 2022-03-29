@@ -6,6 +6,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
 
-class ProjectListView(LoginRequiredMixin, ListView):
+class ProjectListView(ListView):
     model = Project
     template_name = "projects/projects_list.html"

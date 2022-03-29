@@ -4,9 +4,9 @@
     <main>
         <div>
             <h1>My Projects</h1>
-            {% if projects = 0 %}
+            {% if Project is None %}
                 <p>You are not assigned to any projects</p>
-            {% else %}
+                {% endif %}
                 <table>
                     <thead>
                         <tr>
@@ -23,6 +23,6 @@
                         {% endfor %}
                     </tbody>
                 </table>
-            {% endif %}
         </div>
     </main> 
+{% endblock content %}
