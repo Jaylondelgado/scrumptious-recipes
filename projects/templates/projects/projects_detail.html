@@ -21,7 +21,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for task in tasks %}
+                        {% for task in project_detail.tasks.all %}
                         <tr>
                             <td>{{ task.name }}</td>
                             <td>{{ task.assignee }}</td>
