@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from projects.models import Project
 from django.contrib.auth.mixins import LoginRequiredMixin
 from tasks.models import Task
+
 
 # Create your views here.
 
@@ -28,3 +29,9 @@ class ProjectDetailView(LoginRequiredMixin, DetailView):
         context = super().get_context_data(**kwargs)
         context["tasks"] = Task.objects.all()
         return context
+
+
+class ProjectCreateView(LoginRequiredMixin, CreateView):
+    model = Project
+    template_name = "projects/projects_create.html"
+    fields = ["name", "description", "members"]

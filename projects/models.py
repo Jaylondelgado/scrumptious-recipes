@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.shortcuts import redirect
+from django.urls import reverse_lazy
 
 
 USER_MODEL = settings.AUTH_USER_MODEL
@@ -15,3 +16,6 @@ class Project(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse_lazy("show_project", kwargs={"pk": self.pk})
