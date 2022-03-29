@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse_lazy
 
 # from projects.models import Project
 from django.conf import settings
@@ -28,3 +29,6 @@ class Task(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse_lazy("show_project", kwargs={"pk": self.project.pk})
