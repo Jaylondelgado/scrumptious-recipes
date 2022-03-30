@@ -1,4 +1,3 @@
-from django.shortcuts import redirect
 from django.views.generic import CreateView, ListView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from tasks.models import Task

@@ -11,18 +11,18 @@
             {% if tasks|length == 0 %}
                 <p>This project has no tasks</p>
             {% endif %}
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Assignee</th>
-                            <th>Start date</th>
-                            <th>Due date</th>
-                            <th>Is completed</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for task in project_detail.tasks.all %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Assignee</th>
+                        <th>Start date</th>
+                        <th>Due date</th>
+                        <th>Is completed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in project_detail.tasks.all %}
                         <tr>
                             <td>{{ task.name }}</td>
                             <td>{{ task.assignee }}</td>
@@ -30,9 +30,9 @@
                             <td>{{ task.due_date }}</td>
                             <td>{{ task.is_completed }}</td>
                         </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
     </main>
 {% endblock content %}

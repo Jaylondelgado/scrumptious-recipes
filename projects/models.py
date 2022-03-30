@@ -1,6 +1,5 @@
 from django.db import models
 from django.conf import settings
-from django.shortcuts import redirect
 from django.urls import reverse_lazy
 
 
