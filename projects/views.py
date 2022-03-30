@@ -23,7 +23,7 @@ class ProjectListView(LoginRequiredMixin, ListView):
 class ProjectDetailView(LoginRequiredMixin, DetailView):
     model = Project
     template_name = "projects/projects_detail.html"
-    # context_object_name = "project_detail"
+    context_object_name = "project_detail"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
