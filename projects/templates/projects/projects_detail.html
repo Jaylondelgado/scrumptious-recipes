@@ -8,21 +8,21 @@
             {{ project_detail.description|markdownify }}
             <h2>Tasks</h2>
             <p><a href="{% url 'create_task' %}">Create a new task</a></p>
-            {% if tasks|length == 0 %}
+            {% if project_detail.tasks.all|length == 0 %}
                 <p>This project has no tasks</p>
-            {% endif %}
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Assignee</th>
-                        <th>Start date</th>
-                        <th>Due date</th>
-                        <th>Is completed</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for task in project_detail.tasks.all %}
+            {% else %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Assignee</th>
+                            <th>Start date</th>
+                            <th>Due date</th>
+                            <th>Is completed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for task in project_detail.tasks.all %}
                         <tr>
                             <td>{{ task.name }}</td>
                             <td>{{ task.assignee }}</td>
@@ -30,9 +30,10 @@
                             <td>{{ task.due_date }}</td>
                             <td>{{ task.is_completed }}</td>
                         </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
         </div>
     </main>
 {% endblock content %}
